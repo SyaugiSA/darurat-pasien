@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { PasienService } from 'src/pasien/pasien.service';
 import { UserService } from 'src/user/user.service';
 import { Repository } from 'typeorm';
 import { CreateHistoryDto } from './dto/create-history.dto';
@@ -10,7 +11,7 @@ export class HistoryService {
   constructor(
     @InjectRepository(History)
     private historyRepository: Repository<History>,
-    private readonly userService: UserService,
+    private readonly pasienService: PasienService,
   ) {}
 
   async create(createHistoryDto: CreateHistoryDto) {
@@ -30,9 +31,9 @@ export class HistoryService {
   }
 
   async find(pasien: any) {
-    const user = await this.userService.findByPayload(pasien);
+    const user = await this.pasienService.findOne(pasien);
     const history = await this.historyRepository.findBy({
-      pasien: user.id,
+      pasien: user.data.id,
     });
 
     let data = [];
