@@ -44,8 +44,8 @@ export class PanicService {
     );
 
     const history = await this.historyService.create({
-      kamar: pasien.data.kamar,
-      pasienId: pasien.data.id,
+      kamar: pasien.data[0].kamar,
+      pasienId: pasien.data[0].id,
     });
 
     if (history.status) {

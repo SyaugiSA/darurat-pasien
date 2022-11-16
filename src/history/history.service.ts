@@ -34,7 +34,7 @@ export class HistoryService {
     const user = await this.pasienService.findOne(pasien);
     const history = await this.historyRepository.find({
       where: {
-        pasien: user.data.id,
+        pasien: user.data[0].id,
       },
       relations: { pasien: true },
     });
