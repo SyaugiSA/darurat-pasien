@@ -13,5 +13,5 @@ export class History {
   tanggal: string;
 
   @ManyToOne(() => Pasien, (pasien) => pasien.histories)
-  pasien: Pasien;
+  pasien: Pasien | number;
 }

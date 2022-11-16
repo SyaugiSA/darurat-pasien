@@ -32,7 +32,7 @@ export class HistoryService {
   async find(pasien: any) {
     const user = await this.userService.findByPayload(pasien);
     const history = await this.historyRepository.findBy({
-      pasien: Boolean(user.id),
+      pasien: user.id,
     });
 
     let data = [];
