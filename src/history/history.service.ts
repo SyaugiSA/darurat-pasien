@@ -32,8 +32,11 @@ export class HistoryService {
 
   async find(pasien: any) {
     const user = await this.pasienService.findOne(pasien);
-    const history = await this.historyRepository.findBy({
-      pasien: user.data.id,
+    const history = await this.historyRepository.find({
+      where: {
+        pasien: user.data.id,
+      },
+      relations: { pasien: true },
     });
 
     let data = [];
