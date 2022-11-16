@@ -39,7 +39,11 @@ export class HistoryService {
     let data = [];
 
     history.map((val) => {
-      data.unshift({ kamar: val.kamar, tanggal: parseInt(val.tanggal) });
+      data.unshift({
+        kamar: val.kamar,
+        tanggal: parseInt(val.tanggal),
+        pasien: val.pasien,
+      });
     });
 
     return { message: 'Data berhasil didapatkan', status: true, data };
