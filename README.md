@@ -18,5 +18,5 @@
   Aplikasi ini ditujukan untuk pasien yang menjalani rawat inap di rumah sakit. Apabila bel tidak berfungsi sebagaimana mestinya, pasien dapat menekan tombol pada aplikasi ini untuk memanggil perawat.
 </h2>
 
-<a href="https://github.com/SyaugiSA/darurat-pasien/tree/mobile"><h2>Mobile Apps</h2></a>
-<a href="https://github.com/SyaugiSA/darurat-pasien/tree/backend"><h2>Backend Apps</h2></a>
+<a href="https://github.com/SyaugiSA/darurat-pasien/tree/mobile/"><h2>Mobile Apps</h2></a>
+<a href="https://github.com/SyaugiSA/darurat-pasien/tree/backend/"><h2>Backend Apps</h2></a>
