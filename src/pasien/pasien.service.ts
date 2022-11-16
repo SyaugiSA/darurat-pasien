@@ -26,7 +26,12 @@ export class PasienService {
 
   async findOne(no_rmd: string) {
     const data = await this.pasienRepository.findOneBy({ no_rmd });
-    return { message: 'User ditemukan', status: true, data };
+    return {
+      message: 'User ditemukan',
+      status: true,
+      data,
+      history: data.histories,
+    };
   }
 
   async update(no_rmd, updatePasienDto: UpdatePasienDto) {
