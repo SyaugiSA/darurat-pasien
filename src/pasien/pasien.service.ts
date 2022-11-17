@@ -25,7 +25,7 @@ export class PasienService {
   }
 
   async findOne(no_rmd: string) {
-    const data = await this.pasienRepository.find({
+    const data = await this.pasienRepository.findOne({
       where: { no_rmd },
       relations: { histories: true },
     });

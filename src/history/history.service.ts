@@ -32,20 +32,14 @@ export class HistoryService {
 
   async find(pasien: any) {
     const user = await this.pasienService.findOne(pasien);
-    const history = await this.historyRepository.find({
-      where: {
-        pasien: user.data[0].id,
-      },
-      relations: { pasien: true },
-    });
+    const history = user.data.histories;
 
-    let data = [];
+    let data;
 
     history.map((val) => {
       data.unshift({
         kamar: val.kamar,
         tanggal: parseInt(val.tanggal),
-        pasien: val.pasien,
       });
     });
 
