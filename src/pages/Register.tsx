@@ -14,6 +14,7 @@ import { ArrowBackIos } from "@mui/icons-material";
 import axios from "axios";
 import { Server } from "../components/server";
 import { Get } from "../components/Storage";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 interface componentProps {
   nakes: boolean;
@@ -49,6 +50,12 @@ const Register: React.FC<componentProps> = ({ nakes }) => {
 
   useEffect(() => {
     Get("token").then((val) => (val ? window.location.assign("/home") : ""));
+
+    if (Capacitor.isNative) {
+      Plugins.App.addListener("backButton", (e: any) => {
+        window.history.back();
+      });
+    }
   }, []);
 
   return (

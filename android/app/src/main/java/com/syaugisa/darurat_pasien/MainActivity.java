@@ -1,4 +1,4 @@
-package com.example.app;
+package com.syaugisa.darurat_pasien;
 
 import com.getcapacitor.BridgeActivity;
 

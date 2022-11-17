@@ -6,6 +6,7 @@ import axios from "axios";
 import { Server } from "./server";
 import { Clear, Get } from "./Storage";
 import { IonImg } from "@ionic/react";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 const fontFamily = "Poppins";
 
@@ -46,12 +47,18 @@ const HomeComponent: React.FC = () => {
         })
         .then((res) => setAlarm(res.data.data.status));
     }, 1000);
+
+    if (Capacitor.isNative) {
+      Plugins.App.addListener("backButton", (e: any) => {
+        Plugins.App.exitApp();
+      });
+    }
   }, []);
 
   return (
     <Box>
       <Box sx={{ background: Thrid }}>
-        <Box sx={{ mx: "10%" }}>
+        <Box sx={{ mx: "10%", mt: "-4%" }}>
           <Typography
             sx={{
               fontFamily,

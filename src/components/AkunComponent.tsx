@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Primary, Red, Thrid, White } from "./color";
 import { Server } from "./server";
 import { Clear, Get } from "./Storage";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 const fontFamily = "Poppins";
 
@@ -32,6 +33,12 @@ const AkunComponent: React.FC = () => {
           });
       });
     });
+
+    if (Capacitor.isNative) {
+      Plugins.App.addListener("backButton", (e: any) => {
+        Plugins.App.exitApp();
+      });
+    }
   }, []);
 
   return (

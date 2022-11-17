@@ -6,6 +6,7 @@ import "@fontsource/poppins";
 import SplashButton from "../components/SplashButton";
 import { useEffect, useState } from "react";
 import { Get } from "../components/Storage";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 const Splash: React.FC = () => {
   const [masuk, setMasuk] = useState(false);
@@ -23,6 +24,12 @@ const Splash: React.FC = () => {
 
   useEffect(() => {
     Get("token").then((val) => (val ? window.location.assign("/home") : ""));
+
+    if (Capacitor.isNative) {
+      Plugins.App.addListener("backButton", (e: any) => {
+        Plugins.App.exitApp();
+      });
+    }
   }, []);
 
   return (

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Primary, Secondary, White } from "./color";
 import { Server } from "./server";
 import { Get } from "./Storage";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 const fontFamily = "Poppins";
 
@@ -37,6 +38,12 @@ const InfoAkunComponent: React.FC = () => {
         });
       });
     });
+
+    if (Capacitor.isNative) {
+      Plugins.App.addListener("backButton", (e: any) => {
+        window.history.back();
+      });
+    }
   }, []);
 
   return (

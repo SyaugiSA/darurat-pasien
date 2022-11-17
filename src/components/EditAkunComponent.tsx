@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Primary, Secondary, White } from "./color";
 import { Server } from "./server";
 import { Get } from "./Storage";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 const fontFamily = "Poppins";
 
@@ -28,7 +29,7 @@ const EditAkunComponent: React.FC = () => {
       .patch(`${Server}/user/${no}`, data, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((res) => window.history.back())
+      .then((res) => window.location.assign("/akun"))
       .catch((e) => {
         const data = e.respone.data.data;
         setMessage(data.message);
@@ -59,6 +60,12 @@ const EditAkunComponent: React.FC = () => {
         });
       });
     });
+
+    if (Capacitor.isNative) {
+      Plugins.App.addListener("backButton", (e: any) => {
+        window.history.back();
+      });
+    }
   }, []);
 
   return (

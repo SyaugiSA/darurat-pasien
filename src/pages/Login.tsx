@@ -7,6 +7,7 @@ import { Primary, Secondary, White } from "../components/color";
 import axios from "axios";
 import { Create, Get } from "../components/Storage";
 import { Server } from "../components/server";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 const fontFamily = "Poppins";
 
@@ -36,6 +37,12 @@ const Login: React.FC = () => {
 
   useEffect(() => {
     Get("token").then((val) => (val ? window.location.assign("/home") : ""));
+
+    if (Capacitor.isNative) {
+      Plugins.App.addListener("backButton", (e: any) => {
+        window.location.assign("/");
+      });
+    }
   }, []);
 
   return (

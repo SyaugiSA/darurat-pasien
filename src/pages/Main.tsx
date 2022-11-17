@@ -40,7 +40,9 @@ const Main: React.FC<componentProps> = ({ no }) => {
   return (
     <IonPage>
       <IonContent>
-        <Box sx={{ background: Primary }}>
+        <Box
+          sx={{ background: Primary, position: "fixed", top: 0, width: "100%" }}
+        >
           <Box
             display="flex"
             justifyContent="space-evenly"
@@ -77,7 +79,9 @@ const Main: React.FC<componentProps> = ({ no }) => {
           </Box>
         </Box>
 
-        <Componenet />
+        <Box sx={{ mt: "17%", mb: "25%" }}>
+          <Componenet />
+        </Box>
 
         <Box
           sx={{

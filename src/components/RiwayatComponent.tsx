@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Thrid, White } from "./color";
 import { Server } from "./server";
 import { Get } from "./Storage";
+import { Plugins, Capacitor } from "@capacitor/core";
 
 const fontFamily = "Poppins";
 
@@ -36,6 +37,12 @@ const RiwayatComponent: React.FC = () => {
           .then((res) => setData(res.data.data));
       });
     });
+
+    if (Capacitor.isNative) {
+      Plugins.App.addListener("backButton", (e: any) => {
+        Plugins.App.exitApp();
+      });
+    }
   }, []);
 
   return (
