@@ -34,7 +34,7 @@ export class HistoryService {
     const user = await this.pasienService.findOne(pasien);
     const history = user.data.histories;
 
-    let data;
+    let data = [];
 
     history.map((val) => {
       data.unshift({
