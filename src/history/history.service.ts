@@ -27,6 +27,25 @@ export class HistoryService {
 
   async findAll() {
     const data = await this.historyRepository.find();
+
+    let history = [];
+
+    data.map((val) => {
+      history.unshift({
+        kamar: val.kamar,
+        taggal: val.tanggal,
+        pasien: val.pasien,
+      });
+    });
+
+    return { message: 'Data berhasil didapatkan', status: true, data: history };
+  }
+
+  async last() {
+    const data = await this.historyRepository.findOne({
+      relations: { pasien: true },
+      order: { id: 'DESC' },
+    });
     return { message: 'Data berhasil didapatkan', status: true, data };
   }
 

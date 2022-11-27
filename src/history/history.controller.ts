@@ -15,4 +15,14 @@ export class HistoryController {
   find(@Param('id') id: string) {
     return this.historyService.find(id);
   }
+
+  @Get('last')
+  last() {
+    return this.historyService.last();
+  }
+
+  @Get()
+  findAll() {
+    return this.historyService.findAll();
+  }
 }
