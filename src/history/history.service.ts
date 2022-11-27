@@ -26,7 +26,9 @@ export class HistoryService {
   }
 
   async findAll() {
-    const data = await this.historyRepository.find();
+    const data = await this.historyRepository.find({
+      relations: { pasien: true },
+    });
 
     let history = [];
 
