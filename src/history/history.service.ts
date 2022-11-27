@@ -53,7 +53,7 @@ export class HistoryService {
 
   async find(pasien: any) {
     const user = await this.pasienService.findOne(pasien);
-    const history = user.data.histories;
+    const history = await user.data.histories;
 
     let data = [];
 
