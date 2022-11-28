@@ -43,28 +43,27 @@ export class HistoryService {
     return { message: 'Data berhasil didapatkan', status: true, data: history };
   }
 
-  async last() {
-    const data = await this.historyRepository.findOne({
-      relations: { pasien: true },
-      order: { id: 'DESC' },
-      where: {},
-    });
-    return { message: 'Data berhasil didapatkan', status: true, data };
-  }
-
   async find(pasien: any) {
     const user = await this.pasienService.findOne(pasien);
-    const history = await user.data.histories;
 
     let data = [];
 
-    history.map((val) => {
+    await user.data?.histories.map((val) => {
       data.unshift({
         kamar: val.kamar,
         tanggal: parseInt(val.tanggal),
       });
     });
 
+    return { message: 'Data berhasil didapatkan', status: true, data };
+  }
+
+  async last() {
+    const data = await this.historyRepository.findOne({
+      relations: { pasien: true },
+      order: { id: 'DESC' },
+      where: {},
+    });
     return { message: 'Data berhasil didapatkan', status: true, data };
   }
 }

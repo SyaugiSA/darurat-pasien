@@ -11,11 +11,6 @@ export class HistoryController {
     return this.historyService.create(createHistoryDto);
   }
 
-  @Get(':id')
-  find(@Param('id') id: string) {
-    return this.historyService.find(id);
-  }
-
   @Get('last')
   last() {
     return this.historyService.last();
@@ -24,5 +19,10 @@ export class HistoryController {
   @Get()
   findAll() {
     return this.historyService.findAll();
+  }
+
+  @Get(':id')
+  find(@Param('id') id: string) {
+    return this.historyService.find(id);
   }
 }
