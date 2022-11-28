@@ -35,7 +35,7 @@ export class HistoryService {
     data.map((val) => {
       history.unshift({
         kamar: val.kamar,
-        taggal: val.tanggal,
+        taggal: parseInt(val.tanggal),
         pasien: val.pasien,
       });
     });
