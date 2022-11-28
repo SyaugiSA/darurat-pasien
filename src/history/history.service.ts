@@ -47,6 +47,7 @@ export class HistoryService {
     const data = await this.historyRepository.findOne({
       relations: { pasien: true },
       order: { id: 'DESC' },
+      where: {},
     });
     return { message: 'Data berhasil didapatkan', status: true, data };
   }
